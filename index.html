@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#173b72">
+  <meta name="description" content="Encontre caronas compartilhadas para a comunidade da FATEC Araçatuba.">
   <title>Carona FATEC | Araçatuba</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -18,11 +19,11 @@
 
   <main class="app-shell">
     <nav class="steps" aria-label="Etapas">
-      <button class="step active" data-go="home"><span>1</span><b>Buscar</b></button>
-      <i></i>
-      <button class="step" data-go="rides"><span>2</span><b>Disponíveis</b></button>
-      <i></i>
-      <button class="step" data-go="confirmation"><span>3</span><b>Confirmação</b></button>
+      <button class="step active" data-go="home" type="button"><span>1</span><b>Buscar</b></button>
+      <i aria-hidden="true"></i>
+      <button class="step" data-go="rides" type="button"><span>2</span><b>Disponíveis</b></button>
+      <i aria-hidden="true"></i>
+      <button class="step" data-go="confirmation" type="button"><span>3</span><b>Confirmação</b></button>
     </nav>
 
     <section id="screen-home" class="screen">
@@ -38,77 +39,80 @@
       <div class="panel">
         <div class="panel-heading">
           <div><p class="eyebrow">ENCONTRE SUA CARONA</p><h2>Para onde vamos?</h2></div>
-          <span class="round-icon">⌕</span>
+          <span class="round-icon" aria-hidden="true">⌕</span>
         </div>
-        <form id="search-form">
+        <form id="search-form" novalidate>
           <div class="field-grid">
-            <label class="field">
+            <label class="field" id="origin-field" for="origin">
               <span>Seu bairro de origem</span>
-              <select id="origin" required>
+              <select id="origin" name="origin" required aria-describedby="origin-error">
                 <option value="">Selecione seu bairro</option>
                 <option>Hilda</option><option>Paraíso</option><option>Castelo Branco</option>
                 <option>Centro</option><option>Jardim América</option><option>Outro</option>
               </select>
+              <small class="field-error" id="origin-error"></small>
             </label>
-            <label class="field">
+            <label class="field" for="destination">
               <span>Destino</span>
-              <input value="FATEC Araçatuba" readonly>
+              <input id="destination" value="FATEC Araçatuba" readonly>
             </label>
-            <label class="field">
+            <label class="field" id="date-field" for="date">
               <span>Data da viagem</span>
-              <input id="date" type="date" required>
+              <input id="date" name="date" type="date" required aria-describedby="date-error">
+              <small class="field-error" id="date-error"></small>
             </label>
-            <label class="field">
+            <label class="field" for="time">
               <span>Horário aproximado</span>
-              <select id="time">
+              <select id="time" name="time">
                 <option value="Qualquer horário">Qualquer horário</option>
                 <option>07:00 – 08:00</option><option>08:00 – 09:00</option>
                 <option>18:00 – 19:00</option><option>19:00 – 20:00</option>
               </select>
             </label>
           </div>
+          <p id="form-feedback" class="form-feedback hidden" role="alert" aria-live="assertive"></p>
           <button class="primary full" type="submit">Buscar caronas <span>→</span></button>
         </form>
         <p class="privacy-note">🔒 Protótipo acadêmico: os dados exibidos são fictícios e simulados.</p>
       </div>
 
       <div class="info-row">
-        <div class="info-icon">♧</div>
+        <div class="info-icon" aria-hidden="true">♧</div>
         <div><b>Mais economia, menos carros.</b><p>Combine trajetos com pessoas da comunidade FATEC.</p></div>
       </div>
     </section>
 
-    <section id="screen-rides" class="screen hidden">
-      <button class="back-link" data-go="home">← Voltar à busca</button>
+    <section id="screen-rides" class="screen hidden" aria-labelledby="rides-heading">
+      <button class="back-link" data-go="home" type="button">← Voltar à busca</button>
       <div class="section-title">
-        <div><p class="eyebrow">RESULTADOS DA BUSCA</p><h1>Caronas disponíveis</h1><p id="search-summary" class="intro compact"></p></div>
-        <span class="result-count" id="result-count">0 opções</span>
+        <div><p class="eyebrow">RESULTADOS DA BUSCA</p><h1 id="rides-heading">Caronas disponíveis</h1><p id="search-summary" class="intro compact"></p></div>
+        <span class="result-count" id="result-count" aria-live="polite">0 opções</span>
       </div>
       <div id="rides-list" class="rides-list"></div>
       <div id="empty-state" class="empty-state hidden">
-        <span>🚙</span><h3>Nenhuma carona encontrada</h3>
+        <span aria-hidden="true">🚙</span><h3>Nenhuma carona encontrada</h3>
         <p>Tente outro bairro ou horário para ver mais opções.</p>
-        <button class="secondary" data-go="home">Alterar busca</button>
+        <button class="secondary" data-go="home" type="button">Alterar busca</button>
       </div>
-      <div class="tip"><span>💡</span><p><b>Dica de segurança</b><br>Confira os dados da viagem e combine os detalhes diretamente com o motorista.</p></div>
+      <div class="tip"><span aria-hidden="true">💡</span><p><b>Dica de segurança</b><br>Confira os dados da viagem e combine os detalhes diretamente com o motorista.</p></div>
     </section>
 
-    <section id="screen-confirmation" class="screen hidden">
-      <button class="back-link" data-go="rides">← Voltar às caronas</button>
+    <section id="screen-confirmation" class="screen hidden" aria-labelledby="confirmation-heading">
+      <button class="back-link" data-go="rides" type="button">← Voltar às caronas</button>
       <div class="success-head">
-        <div class="success-check">✓</div>
+        <div class="success-check" aria-hidden="true">✓</div>
         <p class="eyebrow">SOLICITAÇÃO REGISTRADA</p>
-        <h1>Pedido de carona<br><em>enviado!</em></h1>
+        <h1 id="confirmation-heading">Pedido de carona<br><em>enviado!</em></h1>
         <p class="intro">Sua solicitação foi simulada com sucesso. Veja o resumo abaixo.</p>
       </div>
       <div class="panel confirmation-panel">
-        <div class="confirm-status"><span class="status-dot"></span> <b id="status-text">Aguardando confirmação do motorista</b></div>
+        <div class="confirm-status"><span class="status-dot" aria-hidden="true"></span> <b id="status-text" aria-live="polite">Aguardando confirmação do motorista</b></div>
         <div id="confirmation-details"></div>
         <div class="protocol"><span>PROTOCOLO DA SOLICITAÇÃO</span><b id="protocol"></b></div>
       </div>
       <div class="action-row">
-        <button class="secondary" id="new-search">Nova busca</button>
-        <button class="primary" id="simulate-approval">Simular aceite <span>✓</span></button>
+        <button class="secondary" id="new-search" type="button">Nova busca</button>
+        <button class="primary" id="simulate-approval" type="button">Simular aceite <span>✓</span></button>
       </div>
       <p class="disclaimer">Esta é uma demonstração sem comunicação real com motoristas. Nenhuma reserva foi enviada de verdade.</p>
     </section>
