@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#173b72">
+  <title>Carona FATEC | Araçatuba</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Carona FATEC - início" data-go="home">
+      <span class="brand-mark">↗</span>
+      <span>carona<span class="brand-light">FATEC</span><small>ARAÇATUBA</small></span>
+    </a>
+    <span class="campus-pill">Comunidade acadêmica</span>
+  </header>
+
+  <main class="app-shell">
+    <nav class="steps" aria-label="Etapas">
+      <button class="step active" data-go="home"><span>1</span><b>Buscar</b></button>
+      <i></i>
+      <button class="step" data-go="rides"><span>2</span><b>Disponíveis</b></button>
+      <i></i>
+      <button class="step" data-go="confirmation"><span>3</span><b>Confirmação</b></button>
+    </nav>
+
+    <section id="screen-home" class="screen">
+      <div class="welcome">
+        <div>
+          <p class="eyebrow">MOBILIDADE COMPARTILHADA</p>
+          <h1>Seu caminho até a<br><em>FATEC fica mais fácil.</em></h1>
+          <p class="intro">Encontre colegas que fazem trajetos parecidos com o seu e compartilhe a viagem.</p>
+        </div>
+        <div class="welcome-art" aria-hidden="true"><span>🚗</span><b>+</b><span>🎓</span></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-heading">
+          <div><p class="eyebrow">ENCONTRE SUA CARONA</p><h2>Para onde vamos?</h2></div>
+          <span class="round-icon">⌕</span>
+        </div>
+        <form id="search-form">
+          <div class="field-grid">
+            <label class="field">
+              <span>Seu bairro de origem</span>
+              <select id="origin" required>
+                <option value="">Selecione seu bairro</option>
+                <option>Hilda</option><option>Paraíso</option><option>Castelo Branco</option>
+                <option>Centro</option><option>Jardim América</option><option>Outro</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Destino</span>
+              <input value="FATEC Araçatuba" readonly>
+            </label>
+            <label class="field">
+              <span>Data da viagem</span>
+              <input id="date" type="date" required>
+            </label>
+            <label class="field">
+              <span>Horário aproximado</span>
+              <select id="time">
+                <option value="Qualquer horário">Qualquer horário</option>
+                <option>07:00 – 08:00</option><option>08:00 – 09:00</option>
+                <option>18:00 – 19:00</option><option>19:00 – 20:00</option>
+              </select>
+            </label>
+          </div>
+          <button class="primary full" type="submit">Buscar caronas <span>→</span></button>
+        </form>
+        <p class="privacy-note">🔒 Protótipo acadêmico: os dados exibidos são fictícios e simulados.</p>
+      </div>
+
+      <div class="info-row">
+        <div class="info-icon">♧</div>
+        <div><b>Mais economia, menos carros.</b><p>Combine trajetos com pessoas da comunidade FATEC.</p></div>
+      </div>
+    </section>
+
+    <section id="screen-rides" class="screen hidden">
+      <button class="back-link" data-go="home">← Voltar à busca</button>
+      <div class="section-title">
+        <div><p class="eyebrow">RESULTADOS DA BUSCA</p><h1>Caronas disponíveis</h1><p id="search-summary" class="intro compact"></p></div>
+        <span class="result-count" id="result-count">0 opções</span>
+      </div>
+      <div id="rides-list" class="rides-list"></div>
+      <div id="empty-state" class="empty-state hidden">
+        <span>🚙</span><h3>Nenhuma carona encontrada</h3>
+        <p>Tente outro bairro ou horário para ver mais opções.</p>
+        <button class="secondary" data-go="home">Alterar busca</button>
+      </div>
+      <div class="tip"><span>💡</span><p><b>Dica de segurança</b><br>Confira os dados da viagem e combine os detalhes diretamente com o motorista.</p></div>
+    </section>
+
+    <section id="screen-confirmation" class="screen hidden">
+      <button class="back-link" data-go="rides">← Voltar às caronas</button>
+      <div class="success-head">
+        <div class="success-check">✓</div>
+        <p class="eyebrow">SOLICITAÇÃO REGISTRADA</p>
+        <h1>Pedido de carona<br><em>enviado!</em></h1>
+        <p class="intro">Sua solicitação foi simulada com sucesso. Veja o resumo abaixo.</p>
+      </div>
+      <div class="panel confirmation-panel">
+        <div class="confirm-status"><span class="status-dot"></span> <b id="status-text">Aguardando confirmação do motorista</b></div>
+        <div id="confirmation-details"></div>
+        <div class="protocol"><span>PROTOCOLO DA SOLICITAÇÃO</span><b id="protocol"></b></div>
+      </div>
+      <div class="action-row">
+        <button class="secondary" id="new-search">Nova busca</button>
+        <button class="primary" id="simulate-approval">Simular aceite <span>✓</span></button>
+      </div>
+      <p class="disclaimer">Esta é uma demonstração sem comunicação real com motoristas. Nenhuma reserva foi enviada de verdade.</p>
+    </section>
+
+    <footer><span>Carona FATEC</span> · Projeto acadêmico de mobilidade urbana · Araçatuba/SP</footer>
+  </main>
+  <script src="js/script.js"></script>
+</body>
+</html>
