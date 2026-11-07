@@ -1,4 +1,4 @@
-# Carona FATEC
+#  FATECCar
 
 Protótipo de site para mobilidade compartilhada entre alunos da Fatec Araçatuba.
 
